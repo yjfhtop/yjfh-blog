@@ -20,3 +20,5 @@ export default {
 }
 </script>
 ```
+
+### 组件

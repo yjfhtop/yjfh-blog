@@ -72,4 +72,5 @@ const bar = 'bar'
 
 ### 组件
 
-[comment]: <> (<MyCom/>)
+<MyCom />
+<my-com />

@@ -14,9 +14,7 @@ module.exports = {
         [
             '@vuepress/register-components',
             {
-                components: {
-                    FooBar: path.resolve(__dirname, './components/MyCom.vue'),
-                },
+                componentsDir: path.resolve(__dirname, './components'),
             },
         ],
     ],
