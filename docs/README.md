@@ -1,9 +1,9 @@
 # 月剑风花的个人博客
 
 
-<Test-index/>
+[comment]: <> (<Test-index/>)
 
-<Badge text="beta" type="warning"/> <Badge text="默认主题"/>
+[comment]: <> (<Badge text="beta" type="warning"/> <Badge text="默认主题"/>)
 
 
 ::: tip

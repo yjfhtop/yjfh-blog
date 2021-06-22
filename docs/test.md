@@ -11,12 +11,12 @@ description: 页面的描述
 ### 导入代码
 @[code](@v/components/Test/index.vue)
 
-<Test-index/>
+[comment]: <> (<Test-index/>)
 
-<Badge text="beta" type="warning"/> <Badge text="默认主题"/>
+[comment]: <> (<Badge text="beta" type="warning"/> <Badge text="默认主题"/>)
 
 
-  
+<span v-for="i in 3"> span: {{ i }} </span>
   
 ### md 扩展 提示
 ::: tip
@@ -33,7 +33,29 @@ console.log('你好，VuePress！')
 ```
 :::
 
-### 代码分组
+
+
+###  Emoji 表情
+*[Emoji 列表](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json)*
+:tada:
+
+
+
+### 内置组件
+<ClientOnly>
+  此处只在客户端渲染
+</ClientOnly>
+
+
+### 主题内置组件
+#### Badge
+
+`type`: 'tip' | 'warning' | 'danger'
+ <Badge text="测试--" />
+
+
+#### code-group
+
 :::: code-group
 ::: code-group-item FOO
 ```js
@@ -47,6 +69,7 @@ const bar = 'bar'
 :::
 ::::
 
-###  Emoji 表情
-*[Emoji 列表](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json)*
-:tada:
+
+### 组件
+
+[comment]: <> (<MyCom/>)

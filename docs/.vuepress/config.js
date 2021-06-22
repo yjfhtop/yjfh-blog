@@ -1,5 +1,8 @@
 const path = require('path')
 
+
+console.log(path.resolve(__dirname, './components'), 'ath.resolve(__dirname, \'./components\')');
+
 module.exports = {
     lang: 'zh-CN',
     title: '月剑风花的个人博客',
@@ -7,7 +10,15 @@ module.exports = {
     head: [
         ['link', { rel: 'icon', href: '/icon.png' }]
     ],
-    extraWatchFiles: [
+    plugins: [
+        [
+            '@vuepress/register-components',
+            {
+                components: {
+                    FooBar: path.resolve(__dirname, './components/MyCom.vue'),
+                },
+            },
+        ],
     ],
     markdown: {
         lineNumbers: false,

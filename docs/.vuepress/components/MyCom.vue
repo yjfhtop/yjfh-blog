@@ -1,12 +1,15 @@
 <template>
     <div>
-        组件测试
+        6666
     </div>
 </template>
 
 <script>
 export default {
-    name: "index"
+    name: "MyCom",
+    data() {
+        return {}
+    }
 }
 </script>
 
