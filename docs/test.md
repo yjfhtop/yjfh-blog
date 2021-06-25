@@ -6,21 +6,25 @@ description: 页面的描述
 ### 自定义页面相关
 
 #### 居中
+
 <div class="content-center">
 ss
 </div>
 
 
 
+
+
 ### 导入代码
-@[code](@v/components/Test/index.vue)
+
+[comment]: <> (@[code]&#40;@v/components/Test/index.vue&#41;)
 
 [comment]: <> (<Test-index/>)
 
 [comment]: <> (<Badge text="beta" type="warning"/> <Badge text="默认主题"/>)
 
 
-<span v-for="i in 3"> span: {{ i }} </span>
+[comment]: <> (<span v-for="i in 3"> span: {{ i }} </span>)
   
 ### md 扩展 提示
 ::: tip
@@ -75,6 +79,3 @@ const bar = 'bar'
 
 
 ### 组件
-
-<MyCom />
-<my-com />
