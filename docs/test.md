@@ -6,6 +6,10 @@ description: 页面的描述
 ### 自定义页面相关
 
 #### 居中
+<div class="content-center">
+ss
+</div>
+
 
 
 ### 导入代码

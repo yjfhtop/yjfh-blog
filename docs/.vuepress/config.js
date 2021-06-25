@@ -1,7 +1,78 @@
 const path = require('path')
+const Fs = require('fs')
+const Path = path
 
 
 console.log(path.resolve(__dirname, './components'), 'ath.resolve(__dirname, \'./components\')');
+
+// 获取 文件 扩展名  如 .js
+function getExtname (filePath) {
+    return Path.extname(filePath)
+}
+
+function arrToObj (arr, toLowerCase = false) {
+    const TargetObj = {}
+    if (!Array.isArray(arr)) {
+        return TargetObj
+    }
+    arr.forEach((item, index) => {
+        let key = item
+        if (toLowerCase) {
+            key = (`${item}`).toLowerCase()
+        }
+        TargetObj[key] = index
+    })
+
+    return TargetObj
+}
+
+function eachDir (dir, callback, fileTypeArr = []) {
+    if (!dir) {
+        throw new Error('dir 必须')
+    }
+    const KeyObj = arrToObj(fileTypeArr)
+    Fs.readdirSync(dir).forEach((file) => {
+        const pathname = Path.join(dir, file)
+        let FileInfo = null
+        try {
+            FileInfo = Fs.statSync(pathname)
+        } catch (e) {
+            return
+        }
+        if (FileInfo.isFile()) {
+            const ext = getExtname(file)
+            if (KeyObj[ext.toLowerCase()] >= 0) {
+                callback(pathname, dir, file, ext)
+            }
+        }
+    })
+}
+
+function getSidebarConf(path, txt) {
+    const conf = {
+        isGroup: true,
+        text: txt,
+        children: [
+            // 'index.md',
+            // 'vue2.md'
+        ]
+    }
+
+    const children = []
+    const usePath = Path.resolve(__dirname, '../', path)
+    eachDir(usePath, (pathname, dir, file, ext) => {
+        if (file.startsWith('index')) {
+            children.unshift(file)
+        } else {
+            children.push(file)
+        }
+
+    }, ['.md'])
+    conf.children = children
+    return conf
+}
+
+console.log(getSidebarConf('qd/vue', 'VUE'));
 
 module.exports = {
     lang: 'zh-CN',
@@ -10,6 +81,11 @@ module.exports = {
     head: [
         ['link', { rel: 'icon', href: '/icon.png' }]
     ],
+    // git: {
+    //     contributors: {
+    //         name: '月剑风花'
+    //     }
+    // },
     plugins: [
         [
             '@vuepress/register-components',
@@ -57,21 +133,29 @@ module.exports = {
             //     ['', 'Vue'],
             // ],
             '/qd/vue/': [
-                {
-                    isGroup: true,
-                    text: 'Vue',
-                    children: [
-                        'index.md',
-                        'vue2.md'
-                    ]
-                }
+                // {
+                //     isGroup: true,
+                //     text: 'Vue',
+                //     children: [
+                //         'index.md',
+                //         'vue2.md'
+                //     ]
+                // }
+                getSidebarConf('qd/vue', 'VUE')
             ],
 
             // // 前端 js
-            // '/qd/js/': [
-            //     ['', 'Js'],
-            // ],
-            //
+            '/qd/js/': [
+                getSidebarConf('qd/js', 'JS')
+                // {
+                //     isGroup: true,
+                //     text: 'Vue',
+                //     children: [
+                //         'README.md',
+                //         '广度遍历.md'
+                //     ]
+                // }
+            ],
             // // 前端 js
             // '/qd/miniProgram/': [
             //     ['', '小程序'],
@@ -83,7 +167,7 @@ module.exports = {
             //     // ['test', 'go 的测试']
             // ]
         },
-        sidebarDepth: 2,
+        sidebarDepth: 1,
         tip: '提示',
         warning: '警告',
         danger: '危险',
