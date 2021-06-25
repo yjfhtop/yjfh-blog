@@ -79,7 +79,7 @@ module.exports = {
     title: '月剑风花的个人博客',
     description: '月剑风花的个人博客，记录自己的日常中的点点滴滴！',
     head: [
-        ['link', { rel: 'icon', href: '/icon.png' }]
+        ['link', { rel: 'icon', href: '/icon.ico' }]
     ],
     // git: {
     //     contributors: {
