@@ -42,7 +42,7 @@ function eachDir (dir, callback, fileTypeArr = []) {
         if (FileInfo.isFile()) {
             const ext = getExtname(file)
             if (KeyObj[ext.toLowerCase()] >= 0) {
-                callback(pathname, dir, file, ext)
+                callback(pathname, dir, file, ext, FileInfo)
             }
         }
     })
@@ -59,20 +59,31 @@ function getSidebarConf(path, txt) {
     }
 
     const children = []
+    const preChildren = []
     const usePath = Path.resolve(__dirname, '../', path)
-    eachDir(usePath, (pathname, dir, file, ext) => {
+    eachDir(usePath, (pathname, dir, file, ext, fileInfo) => {
         if (file.startsWith('index')) {
-            children.unshift(file)
+            preChildren.unshift(file)
         } else {
-            children.push(file)
+            children.push({file, createTime: fileInfo.birthtime})
         }
 
     }, ['.md'])
-    conf.children = children
+    children.sort((l, r) => {
+        if (l.createTime && r.createTime) {
+            if (l.createTime > r.createTime) {
+                return 1
+            } else {
+                return -1
+            }
+        } else {
+            return 0
+        }
+    })
+    conf.children = [...preChildren, ...children.map(item => item.file)]
     return conf
 }
 
-console.log(getSidebarConf('qd/vue', 'VUE'));
 
 module.exports = {
     lang: 'zh-CN',
