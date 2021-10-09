@@ -126,7 +126,7 @@ module.exports = {
                 text: '前端',
                 children: [
                     { text: 'Vue', link: '/qd/vue/' },
-                    { text: 'JS', link: '/qd/js/' },
+                    { text: 'JS和TS', link: '/qd/js/' },
                     { text: '小程序', link: '/qd/miniProgram/' }
                 ]
             },
@@ -165,7 +165,7 @@ module.exports = {
 
             // // 前端 js
             '/qd/js/': [
-                getSidebarConf('qd/js', 'JS')
+                getSidebarConf('qd/js', 'JS和TS')
                 // {
                 //     isGroup: true,
                 //     text: 'Vue',

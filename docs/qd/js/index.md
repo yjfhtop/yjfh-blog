@@ -1,6 +1,6 @@
-# js
+# js and TS
 
-### 你好，js！
+### 你好，js and TS！
 
 ```js
 
