@@ -136,6 +136,14 @@ module.exports = {
                     { text: 'go', link: '/hd/go/' }
                 ]
             },
+            {
+                text: '算法',
+                link: '/sf/',
+            },
+            {
+                text: '项目',
+                link: '/project/',
+            },
             { text: 'github', link: 'https://github.com/yjfhtop' }
         ],
         sidebar: {
@@ -177,6 +185,12 @@ module.exports = {
             //     ['', 'go'],
             //     // ['test', 'go 的测试']
             // ]
+            '/sf/': [
+                getSidebarConf('sf', '算法')
+            ],
+            '/project/': [
+                getSidebarConf('project', '项目（插件和库）')
+            ]
         },
         sidebarDepth: 1,
         tip: '提示',
