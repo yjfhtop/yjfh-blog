@@ -125,8 +125,8 @@ module.exports = {
             {
                 text: '前端',
                 children: [
-                    { text: 'Vue', link: '/qd/vue/' },
                     { text: 'JS和TS', link: '/qd/js/' },
+                    { text: 'Vue', link: '/qd/vue/' },
                     { text: '小程序', link: '/qd/miniProgram/' }
                 ]
             },
