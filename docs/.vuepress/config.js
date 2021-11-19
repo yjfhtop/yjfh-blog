@@ -176,9 +176,9 @@ module.exports = {
                 // }
             ],
             // // 前端 js
-            // '/qd/miniProgram/': [
-            //     ['', '小程序'],
-            // ],
+            '/qd/miniProgram/': [
+                getSidebarConf('qd/miniProgram/', '小程序')
+            ],
             //
             // // 后端go
             // '/hd/go/': [
