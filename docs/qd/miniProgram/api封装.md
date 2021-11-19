@@ -112,7 +112,7 @@ class Request {
                     resolve(this._handleInterceptorsResponse(res))
                 },
                 fail: (err) => {
-                    reject(err)
+                    reject(err.errMsg)
                 },
                 complete: () => {
                     // loading 处理
@@ -141,7 +141,7 @@ class Request {
                     }
                     const useConf = { ...conf.showErrConf }
                     if (errStr) {
-                        useConf.title = errStr
+                        useConf.title = errStr + ''
                     }
                     wx.showToast(useConf)
                 }
